@@ -1,9 +1,4 @@
 # Hardware-Accelerated Limit Order Book (LOB)
-
-![Language: Verilog](https://img.shields.io/badge/Language-Verilog-blue)
-![Target: Artix--7](https://img.shields.io/badge/Target-Xilinx_Artix_7-orange)
-![Timing: Met](https://img.shields.io/badge/Timing-Met_(222_MHz)-success)
-
 ## 📌 Overview
 A highly parallelized, deterministic Limit Order Book (LOB) accelerator designed for High-Frequency Trading (HFT) applications. This core maintains the top 5 "Bids" and top 5 "Asks" for a single instrument, capable of processing new orders, sorting the book, and updating the Top of Book (ToB) prices in a **strict, single-cycle deterministic latency**.
 
