@@ -1,12 +1,12 @@
 # Hardware-Accelerated Limit Order Book (LOB)
-## 📌 Overview
+##  Overview
 A highly parallelized, deterministic Limit Order Book (LOB) accelerator designed for High-Frequency Trading (HFT) applications. This core maintains the top 5 "Bids" and top 5 "Asks" for a single instrument, capable of processing new orders, sorting the book, and updating the Top of Book (ToB) prices in a **strict, single-cycle deterministic latency**.
 
 Designed specifically to bypass the limitations of traditional memory architectures, this project maps complex algorithmic order-matching bottlenecks directly onto custom hardware structures to guarantee nanosecond response times.
 
 ---
 
-## 🏗️ Architectural Decisions & Optimization
+##  Architectural Decisions & Optimization
 
 ### 1. The Memory Bottleneck: Flattened Registers over BRAM
 Standard Block RAM (BRAM) only permits reading 1-2 addresses per clock cycle. To achieve true $O(1)$ single-cycle insertion, BRAM was entirely avoided. The book state is maintained in a **flattened array of D-Flip Flops**, allowing all 5 price/quantity levels on both sides of the book to be read, compared, and written to simultaneously.
@@ -34,7 +34,7 @@ This design achieved timing closure without the need for multi-cycle pipelining,
 
 ---
 
-## 📂 Repository Structure
+##  Repository Structure
 
 * `limit_order_book.v` : The core RTL implementation containing the parallel comparator arrays and single-cycle shift-and-insert logic.
 * `tb_lob.v` : The behavioral testbench injecting back-to-back overlapping Buy and Sell orders.
@@ -43,7 +43,7 @@ This design achieved timing closure without the need for multi-cycle pipelining,
 
 ---
 
-## 🚀 How to Run & Verify
+##  How to Run & Verify
 
 **1. Synthesis & Timing Analysis (Vivado):**
 * Create a new Vivado RTL project targeting `xc7a100tcsg324-1`.
